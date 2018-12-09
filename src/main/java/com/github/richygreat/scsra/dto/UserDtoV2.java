@@ -10,10 +10,10 @@ import org.apache.avro.specific.SpecificData;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class UserDtoV2 extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 8294145823514708993L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"UserDtoV2\",\"namespace\":\"com.github.richygreat.scsra.dto\",\"fields\":[{\"name\":\"id\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"userName\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}]}");
+  private static final long serialVersionUID = 9080930780343868239L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"UserDtoV2\",\"namespace\":\"com.github.richygreat.scsra.dto\",\"fields\":[{\"name\":\"id\",\"type\":\"long\"},{\"name\":\"userName\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
-  @Deprecated public java.lang.String id;
+  @Deprecated public long id;
   @Deprecated public java.lang.String userName;
 
   /**
@@ -28,7 +28,7 @@ public class UserDtoV2 extends org.apache.avro.specific.SpecificRecordBase imple
    * @param id The new value for id
    * @param userName The new value for userName
    */
-  public UserDtoV2(java.lang.String id, java.lang.String userName) {
+  public UserDtoV2(java.lang.Long id, java.lang.String userName) {
     this.id = id;
     this.userName = userName;
   }
@@ -47,7 +47,7 @@ public class UserDtoV2 extends org.apache.avro.specific.SpecificRecordBase imple
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
-    case 0: id = (java.lang.String)value$; break;
+    case 0: id = (java.lang.Long)value$; break;
     case 1: userName = (java.lang.String)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
@@ -57,7 +57,7 @@ public class UserDtoV2 extends org.apache.avro.specific.SpecificRecordBase imple
    * Gets the value of the 'id' field.
    * @return The value of the 'id' field.
    */
-  public java.lang.String getId() {
+  public java.lang.Long getId() {
     return id;
   }
 
@@ -65,7 +65,7 @@ public class UserDtoV2 extends org.apache.avro.specific.SpecificRecordBase imple
    * Sets the value of the 'id' field.
    * @param value the value to set.
    */
-  public void setId(java.lang.String value) {
+  public void setId(java.lang.Long value) {
     this.id = value;
   }
 
@@ -117,7 +117,7 @@ public class UserDtoV2 extends org.apache.avro.specific.SpecificRecordBase imple
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<UserDtoV2>
     implements org.apache.avro.data.RecordBuilder<UserDtoV2> {
 
-    private java.lang.String id;
+    private long id;
     private java.lang.String userName;
 
     /** Creates a new Builder */
@@ -161,7 +161,7 @@ public class UserDtoV2 extends org.apache.avro.specific.SpecificRecordBase imple
       * Gets the value of the 'id' field.
       * @return The value.
       */
-    public java.lang.String getId() {
+    public java.lang.Long getId() {
       return id;
     }
 
@@ -170,7 +170,7 @@ public class UserDtoV2 extends org.apache.avro.specific.SpecificRecordBase imple
       * @param value The value of 'id'.
       * @return This builder.
       */
-    public com.github.richygreat.scsra.dto.UserDtoV2.Builder setId(java.lang.String value) {
+    public com.github.richygreat.scsra.dto.UserDtoV2.Builder setId(long value) {
       validate(fields()[0], value);
       this.id = value;
       fieldSetFlags()[0] = true;
@@ -191,7 +191,6 @@ public class UserDtoV2 extends org.apache.avro.specific.SpecificRecordBase imple
       * @return This builder.
       */
     public com.github.richygreat.scsra.dto.UserDtoV2.Builder clearId() {
-      id = null;
       fieldSetFlags()[0] = false;
       return this;
     }
@@ -239,7 +238,7 @@ public class UserDtoV2 extends org.apache.avro.specific.SpecificRecordBase imple
     public UserDtoV2 build() {
       try {
         UserDtoV2 record = new UserDtoV2();
-        record.id = fieldSetFlags()[0] ? this.id : (java.lang.String) defaultValue(fields()[0]);
+        record.id = fieldSetFlags()[0] ? this.id : (java.lang.Long) defaultValue(fields()[0]);
         record.userName = fieldSetFlags()[1] ? this.userName : (java.lang.String) defaultValue(fields()[1]);
         return record;
       } catch (Exception e) {

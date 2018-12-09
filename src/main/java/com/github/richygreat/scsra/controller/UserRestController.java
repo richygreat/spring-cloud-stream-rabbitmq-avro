@@ -26,7 +26,7 @@ public class UserRestController {
 		boolean messageSent = source.userProducer().send(MessageBuilder.withPayload(userDtoV1).build());
 		log.info("messageSent: {}", messageSent);
 
-		UserDtoV2 userDtoV2 = UserDtoV2.newBuilder().setId("1").setUserName("john").build();
+		UserDtoV2 userDtoV2 = UserDtoV2.newBuilder().setId(1L).setUserName("john").build();
 		messageSent = source.userProducer().send(MessageBuilder.withPayload(userDtoV2).build());
 		log.info("messageSent: {}", messageSent);
 
