@@ -1,13 +1,22 @@
 server:
-  port: 9080
+  port: 8990
 spring.rabbitmq.addresses: ${rabbitmqurl}
 spring.cloud.stream.bindings.userProducer:
-  contentType: application/json
+  contentType: application/*+avro
   destination: test.app
 spring.cloud.stream.bindings.userConsumer:
-  contentType: application/json
+  contentType: application/*+avro
   destination: test.app
   group: user
+  consumer:
+    maxAttempts: 1
+spring.cloud.stream.bindings.roleProducer:
+  contentType: application/*+avro
+  destination: test.app
+spring.cloud.stream.bindings.roleConsumer:
+  contentType: application/*+avro
+  destination: test.app
+  group: role
   consumer:
     maxAttempts: 1
 spring.cloud.stream.rabbit.bindings.userProducer:
@@ -19,5 +28,16 @@ spring.cloud.stream.rabbit.bindings.userConsumer:
     declareExchange: false
     bindQueue: true
     bindingRoutingKey: user-key
+    recoveryInterval: 30000
+    maxConcurrency: 5
+spring.cloud.stream.rabbit.bindings.roleProducer:
+  producer:
+    exchangeType: topic
+    routingKeyExpression: '"role-key"'
+spring.cloud.stream.rabbit.bindings.roleConsumer:
+  consumer:
+    declareExchange: false
+    bindQueue: true
+    bindingRoutingKey: role-key
     recoveryInterval: 30000
     maxConcurrency: 5

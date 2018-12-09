@@ -1,0 +1,15 @@
+{
+   "type":"record",
+   "name":"UserDtoV2",
+   "namespace":"com.github.richygreat.scsra.dto",
+   "fields":[
+      {
+         "name":"id",
+         "type":"string"
+      },
+      {
+         "name":"userName",
+         "type":"string"
+      }
+   ]
+}

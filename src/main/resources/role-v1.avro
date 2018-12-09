@@ -1,0 +1,15 @@
+{
+   "type":"record",
+   "name":"RoleDtoV1",
+   "namespace":"com.github.richygreat.scsra.dto",
+   "fields":[
+      {
+         "name":"id",
+         "type":"string"
+      },
+      {
+         "name":"roleName",
+         "type":"string"
+      }
+   ]
+}

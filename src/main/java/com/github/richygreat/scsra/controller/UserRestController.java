@@ -6,7 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.github.richygreat.scsra.dto.UserDto;
+import com.github.richygreat.scsra.dto.RoleDtoV1;
+import com.github.richygreat.scsra.dto.UserDtoV1;
+import com.github.richygreat.scsra.dto.UserDtoV2;
 import com.github.richygreat.scsra.stream.Source;
 
 import lombok.extern.slf4j.Slf4j;
@@ -20,10 +22,16 @@ public class UserRestController {
 
 	@GetMapping
 	public void getUser() {
-		UserDto userDto = new UserDto();
-		userDto.setId("1");
-		userDto.setUserName("john");
-		boolean messageSent = source.userProducer().send(MessageBuilder.withPayload(userDto).build());
+		UserDtoV1 userDtoV1 = UserDtoV1.newBuilder().setId("1").setUserName("john").build();
+		boolean messageSent = source.userProducer().send(MessageBuilder.withPayload(userDtoV1).build());
+		log.info("messageSent: {}", messageSent);
+
+		UserDtoV2 userDtoV2 = UserDtoV2.newBuilder().setId("1").setUserName("john").build();
+		messageSent = source.userProducer().send(MessageBuilder.withPayload(userDtoV2).build());
+		log.info("messageSent: {}", messageSent);
+
+		RoleDtoV1 roleDtoV1 = RoleDtoV1.newBuilder().setId("1").setRoleName("Admin").build();
+		messageSent = source.roleProducer().send(MessageBuilder.withPayload(roleDtoV1).build());
 		log.info("messageSent: {}", messageSent);
 	}
 }
