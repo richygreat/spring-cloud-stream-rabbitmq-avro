@@ -1,2 +1,23 @@
 server:
   port: 9080
+spring.rabbitmq.addresses: ${rabbitmqurl}
+spring.cloud.stream.bindings.userProducer:
+  contentType: application/json
+  destination: test.app
+spring.cloud.stream.bindings.userConsumer:
+  contentType: application/json
+  destination: test.app
+  group: user
+  consumer:
+    maxAttempts: 1
+spring.cloud.stream.rabbit.bindings.userProducer:
+  producer:
+    exchangeType: topic
+    routingKeyExpression: '"user-key"'
+spring.cloud.stream.rabbit.bindings.userConsumer:
+  consumer:
+    declareExchange: false
+    bindQueue: true
+    bindingRoutingKey: user-key
+    recoveryInterval: 30000
+    maxConcurrency: 5
